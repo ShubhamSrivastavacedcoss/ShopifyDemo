@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zendesk:guide-providers:1.0.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7559db0bc1a181d05c8edb1a51b5fb1a/jetified-guide-providers-1.0.1/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7559db0bc1a181d05c8edb1a51b5fb1a/jetified-guide-providers-1.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7559db0bc1a181d05c8edb1a51b5fb1a/jetified-guide-providers-1.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7559db0bc1a181d05c8edb1a51b5fb1a/jetified-guide-providers-1.0.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/guide-providers/1.0.1/4115cf17c911db13a1330b14afee733be67cc744/guide-providers-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/guide-providers/1.0.1/41aac9b125a8edc75ad1c8e0288ef61e546ab808/guide-providers-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

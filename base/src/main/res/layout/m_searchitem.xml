@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <data>
+        <variable
+            name="commondata"
+            type="com.shopifydemodemo.app.basesection.models.CommanModel" />
+        <variable
+            name="listdata"
+            type="com.shopifydemodemo.app.basesection.models.ListData" />
+        <variable
+            name="clickproduct"
+            type="com.shopifydemodemo.app.searchsection.adapters.SearchRecylerAdapter.Product" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> clickproduct.productClick(view,listdata)}"
+        android:background="@color/white">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:contentDescription="@string/image"
+            bind:imageUrl="@{commondata.imageurl}"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            bind:layout_constraintDimensionRatio="H,1:1.2"
+            bind:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5dp"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/out_of_stock"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/outofstock"
+            android:visibility="gone"
+            bind:layout_constraintBottom_toBottomOf="@+id/image"
+            bind:layout_constraintEnd_toEndOf="@+id/image" />
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:layout_constraintStart_toEndOf="@id/image"
+            bind:layout_constraintTop_toTopOf="parent"
+            bind:texttype="bold"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{listdata.textdata}"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall" />
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/shortdescription"
+            android:layout_width="0dp"
+            bind:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content"
+            bind:layout_constraintStart_toEndOf="@id/image"
+            bind:layout_constraintTop_toBottomOf="@id/name"
+            android:maxLines="2"
+            bind:texttype="normal"
+            android:paddingEnd="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@{listdata.description}"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall" />
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/specialprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:layout_constraintStart_toEndOf="@id/image"
+            bind:layout_constraintTop_toBottomOf="@id/shortdescription"
+            bind:texttype="bold"
+            android:layout_marginStart="8dp"
+            android:text="@{listdata.specialprice}"
+            android:visibility="gone"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:gravity="center_vertical" />
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/offertext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:layout_constraintStart_toEndOf="@id/specialprice"
+            bind:layout_constraintTop_toBottomOf="@id/shortdescription"
+            bind:texttype="normal"
+            android:layout_marginStart="5dp"
+            android:text="@{listdata.offertext}"
+            android:visibility="gone"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:gravity="center_vertical" />
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/regularprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:layout_constraintStart_toEndOf="@id/image"
+            bind:layout_constraintTop_toBottomOf="@id/specialprice"
+            bind:texttype="normal"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="10dp"
+            android:text="@{listdata.regularprice}"
+            android:paddingBottom="10dp"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:gravity="center_vertical" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

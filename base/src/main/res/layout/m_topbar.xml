@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="commondata"
+            type="com.shopifydemodemo.app.basesection.models.CommanModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/back_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{commondata.imageurl}" />
+
+        <View
+            android:id="@+id/overlay"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:alpha="0.5"
+            android:background="@drawable/shadow"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/home_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetStartWithNavigation="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/AppTheme">
+
+            <ImageView
+                android:id="@+id/toolimage"
+                android:layout_width="wrap_content"
+                android:layout_height="?actionBarSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/app_name"
+                android:padding="5dp"
+                android:src="@drawable/logo"
+                android:visibility="gone" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/tooltext"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:padding="2dp"
+                android:text="@string/app_name"
+                android:visibility="gone"
+                app:texttype="whitetext" />
+
+            <RelativeLayout
+                android:id="@+id/searchsection"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+
+                >
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/corner_search"
+                    android:ellipsize="end"
+                    android:gravity="start|center_vertical"
+                    android:hint="I'm shoppping for..."
+                    android:maxLines="1"
+                    android:paddingStart="10dp"
+                    android:textSize="12sp"
+                    app:texttype="normal" />
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/fullsearch"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/corner_search"
+            android:ellipsize="end"
+            android:gravity="start|center_vertical"
+            android:maxLines="1"
+            android:paddingStart="15dp"
+            android:text="I'm shoppping forfgggggggggggggggggggggggfgggggggggggfggggggggggg"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/bannersection"
+            app:layout_constraintTop_toBottomOf="@+id/home_toolbar"
+            app:texttype="normal" />
+
+        <RelativeLayout
+            android:id="@+id/bannersection"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/backimage"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="8dp"
+            app:constraint_referenced_ids="fullsearch,home_toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullsearch"
+
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="12dp"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    >
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/bannerss"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                        android:id="@+id/indicators"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:visibility="gone"
+                        app:dotsColor="@color/white"
+                        app:dotsCornerRadius="8dp"
+                        app:dotsSize="12dp"
+                        app:dotsSpacing="4dp"
+                        app:dotsStrokeColor="@color/black"
+                        app:dotsStrokeWidth="1dp"
+                        app:layout_constraintBottom_toBottomOf="@id/bannerss"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

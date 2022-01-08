@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="commondata"
+            type="com.shopifydemodemo.app.basesection.models.CommanModel" />
+
+        <variable
+            name="categorydata"
+            type="com.shopifydemodemo.app.collectionsection.models.Collection" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:onClick="@{(view) -> categorydata.blockClick(view,categorydata)}"
+            bind:cardCornerRadius="5dp"
+            bind:cardUseCompatPadding="true"
+            bind:layout_constraintDimensionRatio="1:0.4"
+            bind:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/image"
+                android:scaleType="centerCrop"
+                bind:imageUrl="@{commondata.imageurl}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:background="@drawable/shadow" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@{categorydata.category_name}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/card"
+                bind:texttype="whitetext" />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

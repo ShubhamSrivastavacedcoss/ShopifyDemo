@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".yotporewards.rewarddashboard.RewardDashboard">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/title_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="15dp"
+            android:layout_margin="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/black">
+
+
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/balancetitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:texttype="whitetext" />
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/pointtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:texttype="whitetext" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/getreward_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/title_section">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/rewardicon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/giftbox" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/get_rewards"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/rewardicon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="bold" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/earnpoint_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/getreward_section">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/earnpointicon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/star" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/earn_points"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/earnpointicon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="bold" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/referfriend_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/earnpoint_section">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/referfriendicon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/heart_image" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/refer_friends"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/referfriendicon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="bold" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myrewards_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/referfriend_section">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/myrewardsdicon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/user_reward" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/my_rewads"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/myrewardsdicon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="bold" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/faqs_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/myrewards_section">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/faqsicon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/faq_help" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/faqs"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/faqsicon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="bold" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

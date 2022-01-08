@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="stand"
+            type="com.shopifydemodemo.app.homesection.models.StandAloneBanner" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:onClick="@{view->stand.navigateToPage(view,stand.bannertype,stand.bannerlink)}"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{stand.image}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/section_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/section_two"
+            app:layout_constraintHorizontal_weight="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/border_one"
+                android:layout_width="130dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/button_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:onClick="@{view->stand.navigateToPage(view,stand.buttononetype,stand.buttononelink)}"
+                    android:padding="2dp"
+                    android:text="@{stand.text_one}"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    app:texttype="normal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/section_two"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.5"
+            app:layout_constraintStart_toEndOf="@id/section_one"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/border_two"
+                android:layout_width="130dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/button_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:onClick="@{view->stand.navigateToPage(view,stand.buttontwotype,stand.buttontwolink)}"
+                    android:padding="2dp"
+                    android:text="@{stand.text_two}"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    app:texttype="normal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

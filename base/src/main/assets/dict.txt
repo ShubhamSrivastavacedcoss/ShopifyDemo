@@ -1,0 +1,11 @@
+tshirt
+kurti
+men
+kurta
+kids
+jeans
+women
+suit
+shoes
+shirt
+dress

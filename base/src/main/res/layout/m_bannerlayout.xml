@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="common"
+            type="com.shopifydemodemo.app.basesection.models.CommanModel" />
+        <variable
+            name="home"
+            type="com.shopifydemodemo.app.homesection.models.Home" />
+    </data>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/bannerimage"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:contentDescription="@string/image"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        bind:imageUrl="@{common.imageurl}"
+        android:onClick="@{view->home.Click(view,home)}"
+        />
+</layout>

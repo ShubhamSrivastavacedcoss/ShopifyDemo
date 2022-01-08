@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="features"
+            type="com.shopifydemodemo.app.basesection.models.FeaturesModel" />
+
+        <variable
+            name="productdata"
+            type="com.shopifydemodemo.app.basesection.models.ListData" />
+
+        <variable
+            name="clickhandlers"
+            type="com.shopifydemodemo.app.productsection.activities.ProductView.ClickHandlers" />
+
+        <variable
+            name="arImagesList"
+            type="java.util.ArrayList" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="WebViewLayout">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/images"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                bind:layout_constraintDimensionRatio="H,1:1.2"
+                bind:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/judgeme_review_card_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                bind:cardBackgroundColor="@color/white"
+                bind:cardCornerRadius="10dp"
+                bind:cardElevation="5dp"
+                bind:cardUseCompatPadding="true"
+                bind:layout_constraintBottom_toTopOf="@+id/review_card_section"
+                bind:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/judgeme_review_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:padding="10dp">
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/judgeme_rating_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintStart_toStartOf="parent"
+                        bind:layout_constraintTop_toTopOf="parent"
+                        bind:texttype="normal" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/review_card_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                bind:cardBackgroundColor="@color/white"
+                bind:cardCornerRadius="10dp"
+                bind:cardElevation="5dp"
+                bind:cardUseCompatPadding="true"
+                bind:layout_constraintBottom_toBottomOf="@+id/images"
+                bind:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/review_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/rating_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.0"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintStart_toStartOf="parent"
+                        bind:layout_constraintTop_toTopOf="parent"
+                        bind:texttype="normal" />
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:id="@+id/ratting_bar"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:numStars="1"
+                        android:rating="1"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintStart_toEndOf="@+id/rating_txt"
+                        bind:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:background="@color/gray_color"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintStart_toEndOf="@+id/ratting_bar"
+                        bind:layout_constraintTop_toTopOf="parent" />
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/total_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="0"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintEnd_toEndOf="parent"
+                        bind:layout_constraintStart_toEndOf="@+id/view1"
+                        bind:layout_constraintTop_toTopOf="parent"
+                        bind:texttype="normal" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/out_of_stock"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/outofstock"
+                android:visibility="gone"
+                bind:layout_constraintBottom_toBottomOf="@+id/images"
+                bind:layout_constraintEnd_toEndOf="@+id/images" />
+
+            <com.shopifydemodemo.app.utils.CirclePageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                bind:layout_constraintBottom_toBottomOf="@id/images"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aricon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/white_solid_circle"
+                android:onClick="@{view->clickhandlers.showAR(view,productdata)}"
+                android:padding="12dp"
+                android:src="@drawable/ic_augmentedreality"
+                android:translationZ="10dp"
+                android:visibility="gone"
+                bind:layout_constraintEnd_toEndOf="@+id/addtowish"
+                bind:layout_constraintStart_toStartOf="@+id/addtowish"
+                bind:layout_constraintTop_toBottomOf="@+id/addtowish" />
+
+            <!--            <androidx.appcompat.widget.AppCompatImageView-->
+            <!--                android:id="@+id/shareicon"-->
+            <!--                android:layout_width="50dp"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:onClick="@{view->clickhandlers.shareProduct(view,productdata)}"-->
+            <!--                android:padding="12dp"-->
+            <!--                android:src="@drawable/ic_share"-->
+            <!--                android:visibility="@{features.product_share ? View.VISIBLE : View.GONE}"-->
+            <!--                bind:layout_constraintEnd_toEndOf="parent"-->
+            <!--                bind:layout_constraintHorizontal_weight="0.1"-->
+            <!--                bind:layout_constraintStart_toEndOf="@+id/name"-->
+            <!--                bind:layout_constraintTop_toBottomOf="@+id/images" />-->
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                android:text="@{productdata.textdata}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/images"
+                bind:texttype="bold" />
+
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/specialprice"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@{productdata.specialprice}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="gone"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/name"
+                bind:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/regularprice"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@{productdata.regularprice}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toEndOf="@id/specialprice"
+                bind:layout_constraintTop_toBottomOf="@id/name"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/offertext"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@{productdata.offertext}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="gone"
+                bind:layout_constraintStart_toEndOf="@id/regularprice"
+                bind:layout_constraintTop_toBottomOf="@id/name"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/available_qty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textStyle="normal"
+                android:visibility="gone"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/regularprice"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/variantheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/variantheading"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="visible"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/available_qty"
+                bind:texttype="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sizeChartSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="15dp"
+                android:onClick="@{view->clickhandlers.showSizeChart(view,productdata)}"
+                android:visibility="gone"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/available_qty">
+
+                <ImageView
+                    android:id="@+id/size_chart_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/size_chart_icon"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent" />
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/size_chart_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/size_chart"
+                    bind:layout_constraintBottom_toBottomOf="parent"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toEndOf="@+id/size_chart_icon"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:texttype="normal" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/variant_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/variantheading" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/variant_available_qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="12dp"
+                android:visibility="gone"
+                bind:layout_constraintTop_toBottomOf="@+id/variant_container"
+                bind:texttype="normal" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:visibility="gone"
+                bind:cardCornerRadius="8dp"
+                bind:cardUseCompatPadding="true"
+                bind:layout_constraintDimensionRatio="H,1:1.6"
+                bind:layout_constraintTop_toBottomOf="@id/variant_available_qty">
+
+                <RelativeLayout
+                    android:id="@+id/pickupsection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/checks"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="7dp" />
+
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/checks"
+                        android:paddingStart="3dp"
+                        android:paddingEnd="3dp"
+                        bind:texttype="bold" />
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/addfirst"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/heading"
+                        android:layout_marginTop="3dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        bind:texttype="bold" />
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/addsecond"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/addfirst"
+                        android:layout_marginTop="3dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        bind:texttype="bold" />
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/pickuptime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/addsecond"
+                        android:layout_marginTop="3dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        bind:texttype="bold" />
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/phonenumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pickuptime"
+                        android:layout_marginTop="3dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        bind:texttype="bold" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/checkstoretext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/checkstores"
+                android:visibility="gone"
+                bind:layout_constraintTop_toBottomOf="@id/card"
+                bind:texttype="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/storerecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                bind:layout_constraintTop_toBottomOf="@id/checkstoretext" />
+
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/qty_title_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Quantity"
+                bind:layout_constraintTop_toBottomOf="@+id/storerecycler"
+                bind:texttype="normal" />
+
+            <LinearLayout
+                android:id="@+id/qtysection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/qty_title_txt">
+
+                <ImageView
+                    android:id="@+id/decrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/image"
+                    android:onClick="@{view->clickhandlers.decrease(view)}"
+                    android:src="@drawable/minu" />
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/quantity"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/round_corner_gray"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="10sp"
+                    bind:texttype="normal" />
+
+                <ImageView
+                    android:id="@+id/increase"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/image"
+                    android:onClick="@{view->clickhandlers.increase(view)}"
+                    android:src="@drawable/plus" />
+            </LinearLayout>
+
+
+            <com.shopifydemodemo.app.customviews.MageNativeButton
+                android:id="@+id/addtocart"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:onClick="@{(view) -> clickhandlers.addtoCart(view,productdata)}"
+                android:text="@string/addtocart"
+                bind:buttontype="normal"
+                bind:layout_constraintBottom_toTopOf="@id/shareicon"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/qtysection" />
+
+            <Button
+                android:id="@+id/shareicon"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/rect_drawable"
+                android:fontFamily="@font/cairoregular"
+                android:gravity="center"
+                android:onClick="@{view->clickhandlers.shareProduct(view,productdata)}"
+                android:padding="4dp"
+                android:text="@string/shareheading"
+                android:visibility="@{features.product_share ? View.VISIBLE : View.GONE}"
+                bind:buttontype="normal"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/addtocart" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/description_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/description"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/shareicon"
+                bind:texttype="bold" />
+
+            <WebView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/description_title"
+                bind:texttype="normal" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/yotpo_write_review_but"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="8dp"
+                android:text="@string/yotpo_rate_product"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="14sp"
+                android:visibility="gone"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/description" />
+
+            <RelativeLayout
+                android:id="@+id/yotporeviewsection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                bind:layout_constraintTop_toBottomOf="@id/yotpo_write_review_but">
+
+
+                <TextView
+                    android:id="@+id/yotpo_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/please_select_rating"
+                    android:textColor="@color/black" />
+
+                <RatingBar
+                    android:id="@+id/yotpo_rating_bar"
+                    style="@style/Widget.AppCompat.RatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/yotpo_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:progressBackgroundTint="@color/gray_color"
+                    android:progressTint="@color/appTheme" />
+
+                <EditText
+                    android:id="@+id/yotpo_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/yotpo_rating_bar"
+                    android:layout_gravity="end"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_border"
+                    android:hint="Name"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/yotpo_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/yotpo_name"
+                    android:layout_gravity="end"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_border"
+                    android:hint="Email"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/yotpo_reviewtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/yotpo_email"
+                    android:layout_gravity="end"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_border"
+                    android:hint="Review Title"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/yotpo_reviewbody"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@id/yotpo_reviewtitle"
+                    android:layout_gravity="end"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_border"
+                    android:gravity="top|start"
+                    android:hint="Your Review"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/yotpo_submitreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/yotpo_reviewbody"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/buy_border1"
+                    android:text="Submit Review"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/addtowish"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/white_solid_circle"
+                android:onClick="@{(view) -> clickhandlers.addtoWish(view,productdata)}"
+                android:padding="10dp"
+                android:src="@drawable/wishlist_icon"
+                android:translationZ="10dp"
+                android:visibility="@{features.in_app_wishlist ? View.VISIBLE: View.GONE}"
+                bind:buttontype="normal"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toTopOf="@+id/images"
+                bind:tint="@android:color/holo_red_light" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/review_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:visibility="@{features.productReview ? View.VISIBLE : View.GONE}"
+                bind:layout_constraintTop_toBottomOf="@+id/yotporeviewsection">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/ratting_review_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/ratings_reviews"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:texttype="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/view_all_but"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/cairobold"
+                    android:onClick="@{view->clickhandlers.viewAllReview(view)}"
+                    android:text="@string/view_all"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/ratting_review_title" />
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/review_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    bind:layout_constraintTop_toBottomOf="@+id/view_all_but"
+                    tools:listitem="@layout/review_list_item" />
+
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/review_indecator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/review_list" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rate_product_but"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/cairobold"
+                    android:onClick="@{(view) -> clickhandlers.rateProduct(view,productdata)}"
+                    android:padding="8dp"
+                    android:text="@string/rate_product"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="14sp"
+                    bind:constraint_referenced_ids="review_list,no_reviews"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/review_indecator" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/no_reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/cairobold"
+                    android:text="@string/sorry_this_product_does_not_have_any_reviews"
+                    android:textSize="12sp"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/view_all_but" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/judgeme_review_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:visibility="@{features.judgemeProductReview ? View.VISIBLE : View.GONE}"
+                bind:layout_constraintTop_toBottomOf="@+id/review_section">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/judgeme_ratting_review_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/ratings_reviews"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:texttype="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/judgeme_view_all_but"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/cairobold"
+                    android:onClick="@{view->clickhandlers.viewAllJudgeMeReview(view)}"
+                    android:text="@string/view_all"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/judgeme_ratting_review_title" />
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/judgeme_review_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    bind:layout_constraintTop_toBottomOf="@+id/judgeme_view_all_but"
+                    tools:listitem="@layout/review_list_item" />
+
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/judgeme_review_indecator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/judgeme_review_list" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/judgeme_rate_product_but"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/cairobold"
+                    android:onClick="@{(view) -> clickhandlers.rateProductJudgeMe(view,productdata)}"
+                    android:padding="8dp"
+                    android:text="@string/rate_product"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="14sp"
+                    bind:constraint_referenced_ids="judgeme_review_list,judgeme_no_reviews"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/judgeme_review_indecator" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/judgeme_no_reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/cairoregular"
+                    android:text="@string/sorry_this_product_does_not_have_any_reviews"
+                    android:textSize="12sp"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/judgeme_view_all_but" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:visibility="gone"
+                android:id="@+id/ali_review_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                bind:layout_constraintTop_toBottomOf="@+id/review_section">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/ali_ratting_review_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/ratings_reviews"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:texttype="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/ali_view_all_but"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/cairobold"
+                    android:onClick="@{view->clickhandlers.viewAllAliReview(view)}"
+                    android:text="@string/view_all"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/ali_ratting_review_title" />
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/ali_review_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    bind:layout_constraintTop_toBottomOf="@+id/ali_view_all_but"
+                    tools:ignore="TooManyViews"
+                    tools:listitem="@layout/review_list_item" />
+
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/ali_review_indecator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/ali_review_list" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/ali_rate_product_but"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/cairobold"
+                    android:onClick="@{(view) -> clickhandlers.rateProductJudgeMe(view,productdata)}"
+                    android:padding="8dp"
+                    android:text="@string/rate_product"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    bind:constraint_referenced_ids="ali_review_list,ali_no_reviews"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/ali_review_indecator" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/ali_no_reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/cairoregular"
+                    android:text="@string/sorry_this_product_does_not_have_any_reviews"
+                    android:textSize="12sp"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/ali_view_all_but" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/personalisedsection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/main_color_gray_lt"
+                android:visibility="gone"
+                bind:layout_constraintBottom_toTopOf="@+id/shopifyrecommended_section"
+                bind:layout_constraintTop_toBottomOf="@id/ali_review_section">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/personalisedyext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/similarproducts"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:texttype="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/personalised"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/white"
+                    android:layoutAnimation="@anim/layout_animation"
+                    bind:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    bind:layout_constraintBottom_toBottomOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/personalisedyext" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/shopifyrecommended_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/main_color_gray_lt"
+                android:visibility="gone"
+                bind:layout_constraintBottom_toBottomOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/personalisedsection">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/shopifyrecommended_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/you_may_also_like"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:texttype="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/shopifyrecommended_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/white"
+                    android:layoutAnimation="@anim/layout_animation"
+                    bind:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    bind:layout_constraintBottom_toBottomOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/shopifyrecommended_title" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

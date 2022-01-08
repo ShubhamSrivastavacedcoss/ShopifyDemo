@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="varaint_data"
+            type="com.shopifydemodemo.app.productsection.models.VariantData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/variant_default_bg"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/variant_image"
+            imageUrl="@{varaint_data.variantimage}"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/variant_name1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/cairoregular"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@{varaint_data.selectedoption_one}"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:visibility="@{varaint_data.selectedoption_one.length() >0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="@id/variant_image"
+            app:layout_constraintStart_toStartOf="@+id/variant_image"
+            app:layout_constraintTop_toBottomOf="@+id/variant_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/variant_name2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/cairoregular"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@{varaint_data.selectedoption_two}"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:visibility="@{varaint_data.selectedoption_two.length() >0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="@id/variant_image"
+            app:layout_constraintStart_toStartOf="@+id/variant_image"
+            app:layout_constraintTop_toBottomOf="@+id/variant_name1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/variant_name3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/cairoregular"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@{varaint_data.selectedoption_three}"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:visibility="@{varaint_data.selectedoption_three.length() >0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="@id/variant_image"
+            app:layout_constraintStart_toStartOf="@+id/variant_image"
+            app:layout_constraintTop_toBottomOf="@+id/variant_name2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/cairoregular"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/variant_name3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

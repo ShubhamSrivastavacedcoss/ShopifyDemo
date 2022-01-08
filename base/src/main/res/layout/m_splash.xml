@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="commonmodel"
+            type="com.shopifydemodemo.app.basesection.models.CommanModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/splashimage"
+            imageUrl="@{commonmodel.imageurl}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true" />
+
+<!--        <androidx.appcompat.widget.AppCompatImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="@{commonmodel.imageurl == null ? View.VISIBLE : View.GONE}"-->
+<!--            bind:layout_constraintBottom_toBottomOf="parent"-->
+<!--            bind:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            bind:layout_constraintStart_toStartOf="parent"-->
+<!--            bind:layout_constraintTop_toTopOf="parent"-->
+<!--            bind:srcCompat="@drawable/splash_bg" />-->
+
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:visibility="@{commonmodel.imageurl == null ? View.VISIBLE : View.GONE}"
+            bind:layout_constraintBottom_toTopOf="@+id/loading_txt"
+            bind:layout_constraintEnd_toEndOf="parent"
+            android:indeterminateDrawable="@drawable/progress"
+            bind:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/loading_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/cairoregular"
+            android:text="@string/loading"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="@{commonmodel.imageurl == null ? View.VISIBLE : View.GONE}"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

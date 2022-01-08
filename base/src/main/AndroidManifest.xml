@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.shopifydemodemo.app">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+    <dist:module dist:instant="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name="com.shopifydemodemo.app.MyApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity
+            android:name="com.shopifydemodemo.app.maintenence_section.MaintenenceActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name="com.shopifydemodemo.app.productsection.activities.AllAliReviewsListActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/notification" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <activity
+            android:name="com.shopifydemodemo.app.ordersection.activities.OrderDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.productsection.activities.AllJudgeMeReviews"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.productsection.activities.JudgeMeCreateReview"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.productsection.activities.VideoPlayerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.productsection.activities.AllReviewListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.productsection.activities.ZoomActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.collectionsection.activities.CollectionListMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.checkoutsection.activities.OrderSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.yotporewards.earnrewards.FaqsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.yotporewards.myrewards.MyRewardsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.yotporewards.referfriend.ReferFriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.yotporewards.earnrewards.EarnRewardsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.yotporewards.getrewards.GetRewardsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.yotporewards.rewarddashboard.RewardDashboard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.yotporewards.withoutlogin.RewardsPointActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name="com.shopifydemodemo.app.notificationsection.FirebaseInstanceIDService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.shopifydemodemo.app.notificationsection.FirebaseMessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.shopifydemodemo.app.jobservicessection.JobScheduler"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity
+            android:name="com.shopifydemodemo.app.basesection.activities.Splash"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="random-booksin.myshopify.com"
+                    android:pathPrefix="/openapp"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="random-booksin.myshopify.com"
+                    android:pathPrefix="/openapp"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="magenative.myshopify.com"
+                    android:pathPrefix="/openapp"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="magenative.myshopify.com"
+                    android:pathPrefix="/openapp"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.shopifydemodemo.app.addresssection.activities.AddressList"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.shopifydemodemo.app.basesection.activities.Weblink"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.basesection.activities.NewBaseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.productsection.activities.ProductList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.productsection.activities.ProductView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.collectionsection.activities.CollectionList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.wishlistsection.activities.WishList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.cartsection.activities.CartList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.ordersection.activities.OrderList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.searchsection.activities.AutoSearch"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.checkoutsection.activities.CheckoutWeblink"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.trialsection.activities.TrialExpired"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.homesection.activities.HomePage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shopifydemodemo.app.loginsection.activity.LoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name="com.shopifydemodemo.app.userprofilesection.activities.UserProfile"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.shopifydemodemo.app.loginsection.activity.RegistrationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name="com.shopifydemodemo.app.searchsection.activities.SearchByScanner"
+            android:label="@string/app_name"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.shopifydemodemo.app.livepreviewsection.LivePreview"
+            android:label="@string/app_name"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name="com.shopifydemodemo.app.productsection.activities.WriteAReview"
+            android:label="@string/app_name"
+            android:screenOrientation="fullSensor"/>
+        <activity android:name="com.shopifydemodemo.app.productsection.activities.FilterActivity"
+            android:screenOrientation="portrait"/>
+            android:screenOrientation="fullSensor" />
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="ica" />
+        <meta-data
+            android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
+            android:value="true" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme"
+                    tools:ignore="ManifestResource" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".basesection.activities.SocialMedia"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>

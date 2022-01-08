@@ -1,0 +1,211 @@
+<!--
+ ~ Copyright/**
+ ~          * CedCommerce
+ ~           *
+ ~           * NOTICE OF LICENSE
+ ~           *
+ ~           * This source file is subject to the End User License Agreement (EULA)
+ ~           * that is bundled with this package in the file LICENSE.txt.
+ ~           * It is also available through the world-wide-web at this URL:
+ ~           * http://cedcommerce.com/license-agreement.txt
+ ~           *
+ ~           * @category  Ced
+ ~           * @package   MageNative
+ ~           * @author    CedCommerce Core Team <connect@cedcommerce.com >
+ ~           * @copyright Copyright CEDCOMMERCE (http://cedcommerce.com/)
+ ~           * @license      http://cedcommerce.com/license-agreement.txt
+ ~           */
+ -->
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetStartWithNavigation="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/AppTheme">
+
+            <ImageView
+                android:id="@+id/toolimage"
+                android:layout_width="wrap_content"
+                android:layout_height="?actionBarSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/app_name"
+                android:padding="5dp"
+
+                android:visibility="gone"
+                android:layout_gravity="center"/>
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/tooltext"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:padding="2dp"
+                android:text="@string/app_name"
+                android:visibility="gone"
+                app:texttype="whitetext" />
+
+            <RelativeLayout
+                android:id="@+id/searchsection"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/corner_search"
+                    android:ellipsize="end"
+                    android:gravity="start|center_vertical"
+                    android:hint="I'm shoppping for..."
+                    android:maxLines="1"
+                    android:paddingStart="10dp"
+                    android:textSize="12sp"
+                    app:texttype="normal" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fullsearch_container"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/container"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/fullsearch"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/corner_search"
+                android:ellipsize="end"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:paddingStart="15dp"
+                android:text="I'm shoppping forfgggggggggggggggggggggggfgggggggggggfggggggggggg"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="normal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/nav_view"
+            app:layout_constraintTop_toBottomOf="@id/fullsearch_container" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/chat_but"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:background="@drawable/chat_bg"
+            android:paddingStart="20dp"
+            android:paddingTop="8dp"
+            android:visibility="gone"
+            android:paddingEnd="12dp"
+            android:paddingBottom="8dp"
+            android:translationZ="10dp"
+            app:layout_constraintBottom_toTopOf="@id/nav_view"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/support_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/telephone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/help"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/support_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/whatsappchat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_whatsapp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/nav_view"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/messengerchat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_messenger"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/nav_view"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <fragment
+        android:id="@+id/leftmenu"
+        android:name="com.shopifydemodemo.app.basesection.fragments.LeftMenu"
+        android:layout_width="290dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:layout="@layout/m_leftmenufragment"
+        tools:layout="@layout/m_leftmenufragment" />
+</androidx.drawerlayout.widget.DrawerLayout>

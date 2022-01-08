@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="history_item"
+            type="com.shopifydemodemo.app.yotporewards.myrewards.model.HistoryItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="2dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/datetitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/actiontitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/action"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/datetitle"
+                app:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/pointstitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/points"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actiontitle"
+                app:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/statustitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/status"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pointstitle"
+                app:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/datettxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{history_item.date}"
+                app:layout_constraintBottom_toBottomOf="@+id/datetitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/datetitle"
+                app:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/actiontxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{history_item.action}"
+                app:layout_constraintBottom_toBottomOf="@+id/actiontitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/actiontitle"
+                app:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/pointstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{history_item.points.toString()}"
+                app:layout_constraintBottom_toBottomOf="@+id/pointstitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/pointstitle"
+                app:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/statustxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{history_item.status}"
+                app:layout_constraintBottom_toBottomOf="@+id/statustitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/statustitle"
+                app:texttype="normal" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

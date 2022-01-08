@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="5dp"
+            android:elevation="5dp"
+            app:srcCompat="@drawable/arrow_top" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp"
+            app:cardPreventCornerOverlap="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/wishlistsection"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/wishlist_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/wishlist_icon" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/wishlist_but"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/cairobold"
+                        android:text="@string/my_favorite"
+                        android:textAllCaps="true"
+                        android:textColor="@color/main_color_gray_lt"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/wishlist_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/main_color_gray_lt"
+                    app:layout_constraintTop_toBottomOf="@+id/wishlistsection" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sharesection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/line1">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/share_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/share_icon" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/share_but"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/cairobold"
+                        android:text="@string/share_this"
+                        android:textAllCaps="true"
+                        android:textColor="@color/main_color_gray_lt"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/share_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/main_color_gray_lt"
+                    app:layout_constraintTop_toBottomOf="@+id/sharesection" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/notintrestedsection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/line2">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/close_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="20dp"
+                        android:tint="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_cancel" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/close_but"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/cairobold"
+                        android:text="@string/close"
+                        android:textAllCaps="true"
+                        android:textColor="@color/main_color_gray_lt"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/close_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+</layout>
+

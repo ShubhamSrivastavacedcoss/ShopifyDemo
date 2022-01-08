@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="commondata"
+            type="com.shopifydemodemo.app.basesection.models.CommanModel" />
+        <variable
+            name="product_id"
+            type="String" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="variantData"
+            type="com.shopify.buy3.Storefront.Product" />
+
+        <variable
+            name="handler"
+            type="com.shopifydemodemo.app.wishlistsection.adapters.WishListAdapter.ClickHandlers" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        bind:cardCornerRadius="2dp"
+        bind:cardElevation="2dp"
+        bind:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:contentDescription="@string/image"
+                bind:imageUrl="@{commondata.imageurl}"
+                bind:layout_constraintDimensionRatio="H,1:1.2"
+                bind:layout_constraintTop_toTopOf="parent" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="4dp"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/image"
+                bind:texttype="normal" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:alpha="0.5"
+                android:background="@color/gray_color"
+                bind:layout_constraintTop_toBottomOf="@id/name" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/movetocart"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="2dp"
+                android:gravity="center"
+                android:onClick="@{view->handler.moveToCart(view,product_id,variantData,position)}"
+                android:padding="5dp"
+                android:text="@string/movetocart"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/line"
+                bind:texttype="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/cancel_action"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/image"
+                android:onClick="@{view->handler.removeWishList(view,product_id,position)}"
+                android:padding="10dp"
+                android:src="@drawable/ic_cancel"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
+

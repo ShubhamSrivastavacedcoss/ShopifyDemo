@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bottomdata"
+            type="com.shopifydemodemo.app.cartsection.models.CartBottomData" />
+
+        <variable
+            name="handler"
+            type="com.shopifydemodemo.app.cartsection.activities.CartList.ClickHandler" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_color"
+        android:visibility="gone">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottomsection"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="8.5">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray_color">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clearcart_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_cream"
+                    android:onClick="@{view->handler.clearCart(view)}"
+                    android:padding="15dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/click_here_to_clear_your_cart"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:texttype="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/delete_icon"
+                        android:tint="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/cartlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layoutAnimation="@anim/layout_animation"
+                    app:layout_constraintBottom_toTopOf="@+id/zepiet_section"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clearcart_section"
+                    bind:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    bind:listitem="@layout/m_cartitem" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/zepiet_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/cartlist">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/local_container"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/black_border"
+                        android:onClick="@{(view)->handler.localDeliveryClick(view)}"
+                        app:layout_constraintEnd_toStartOf="@+id/store_container"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/local_icon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/local_icon" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/local_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/local_delivery"
+                            android:textAlignment="center"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/local_icon" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/store_container"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/black_border"
+                        android:onClick="@{(view)->handler.storeDeliveryClick(view)}"
+                        app:layout_constraintEnd_toStartOf="@+id/shipping_container"
+                        app:layout_constraintStart_toEndOf="@+id/local_container"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/store_icon"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/store_icon" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/store_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/pick_up_in_store"
+                            android:textAlignment="center"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/store_icon" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/shipping_container"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/black_border"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/store_container"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ship_icon"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/earth" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/ship_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/ship"
+                            android:textAlignment="center"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/ship_icon" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/delivery_option"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:visibility="visible"
+                        app:layout_constraintTop_toBottomOf="@+id/local_container">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/deliver_area_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/please_enter_your_postal_code_to_find_out_if_we_deliver_to_this_area"
+                            android:textSize="12sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <LinearLayout
+                            android:id="@+id/zipcode"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border2"
+                            android:orientation="horizontal"
+                            android:weightSum="10"
+                            app:layout_constraintTop_toBottomOf="@id/deliver_area_txt">
+
+                            <EditText
+                                android:id="@+id/zipcodes"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="9"
+                                android:background="@drawable/border1"
+                                android:hint="Enter postal code here"
+                                android:paddingStart="10dp"
+                                android:textSize="14sp"
+                                android:textStyle="italic" />
+
+                            <ImageView
+                                android:id="@+id/searchpostalcode"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:onClick="@{view->handler.loadpincode(view)}"
+                                android:src="@drawable/search"
+                                app:tint="@color/main_color_gray_lt" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/pintext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/nodelivery"
+                            android:textColor="@color/red"
+                            android:textSize="15sp"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/zipcode" />
+
+                        <TextView
+                            android:id="@+id/pintextrue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/delivery"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/pintext" />
+                        <TextView
+                            android:id="@+id/shipnote"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/pintext" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/delivery_date_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/round_corner_lightgray"
+                            android:gravity="center"
+                            android:onClick="@{(view)->handler.deliveryDatePicker()}"
+                            android:padding="8dp"
+                            android:text="@string/click_here_to_select_delivery_date"
+                            android:textSize="15sp"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/pintextrue" />
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/delivery_time_spn"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/round_corner_lightgray"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/delivery_date_txt" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/order_note_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="7dp"
+                            android:background="@drawable/round_corner_lightgray"
+                            android:fontFamily="@font/roboto_light"
+                            android:hint="@string/order_note_hint"
+                            android:padding="10dp"
+                            android:textSize="12sp"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/delivery_time_spn" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/map_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/order_note_edt">
+
+                            <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:tools="http://schemas.android.com/tools"
+                                android:id="@+id/store_map"
+                                android:name="com.google.android.gms.maps.SupportMapFragment"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:context="com.loafly.app.cartsection.activities.CartList" />-->
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/location_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/map_container" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:visibility="gone"
+                    android:id="@+id/giftcard_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/light_cream"
+                    android:padding="5dp"
+                    app:layout_constraintTop_toBottomOf="@+id/zepiet_section">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/giftcard_edt"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/round_corner_lightgray"
+                        android:hint="@string/gift_card"
+                        android:inputType="textCapCharacters"
+                        android:paddingStart="8dp"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/apply_gift_but"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.shopifydemodemo.app.customviews.MageNativeButton
+                        android:id="@+id/apply_gift_but"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="5dp"
+                        android:onClick="@{view->handler.applyGiftCard(view,bottomdata)}"
+                        android:text="@string/apply"
+                        app:buttontype="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/giftcard_edt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/subtotaltext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@{bottomdata.subtotaltext}"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/giftcard_section"
+                    app:texttype="bold" />
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/subtotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@{bottomdata.subtotal}"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/giftcard_section"
+                    app:texttype="normal" />
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/taxtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/taxtext"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subtotaltext"
+                    app:texttype="bold" />
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/tax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@{bottomdata.tax}"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subtotal"
+                    app:texttype="normal" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/personalisedsection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/tax">
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/personalisedyext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_margin="8dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/fbt"
+                        android:textAllCaps="true"
+                        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:texttype="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/personalised"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@color/white"
+                        android:layoutAnimation="@anim/layout_animation"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/personalisedyext"
+                        bind:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/personalisedsection_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/personalisedsection">
+
+                    <com.shopifydemodemo.app.customviews.MageNativeTextView
+                        android:id="@+id/personalisedyext_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_margin="8dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/ymal"
+                        android:textAllCaps="true"
+                        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:texttype="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/personalised_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@color/white"
+                        android:layoutAnimation="@anim/layout_animation"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/personalisedyext_2"
+                        bind:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomsection"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/radius_dialog_shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scroll"
+            app:layout_constraintVertical_weight="1.5">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/grandsection"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{bottomdata.grandtotal}"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:texttype="bold" />
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/totaltext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/grandtotal"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:texttype="bold" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/proceed"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/gpay_but"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/grandsection">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.shopifydemodemo.app.customviews.MageNativeButton
+                        android:id="@+id/proceedtocheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="2dp"
+                        android:gravity="center"
+                        android:onClick="@{view->handler.loadCheckout(view,bottomdata)}"
+                        android:singleLine="true"
+                        android:text="@string/proceed"
+                        android:textSize="14sp"
+                        app:buttontype="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/gpay_but"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/proceed"
+                app:layout_constraintTop_toBottomOf="@+id/grandsection">
+
+                <!--                <androidx.cardview.widget.CardView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="5dp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+                <include
+                    android:id="@+id/googlePayButton"
+                    layout="@layout/buy_with_googlepay_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:onClick="@{view->handler.payWithGpay(view,bottomdata)}"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--                </androidx.cardview.widget.CardView>-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

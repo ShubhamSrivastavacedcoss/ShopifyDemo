@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="order"
+            type="com.shopifydemodemo.app.ordersection.models.Order" />
+
+        <variable
+            name="features"
+            type="com.shopifydemodemo.app.basesection.models.FeaturesModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        bind:cardCornerRadius="2dp"
+        bind:cardElevation="2dp"
+        bind:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="10dp">
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/ordernoheading"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@color/gray_color"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="@string/ordernoheading"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintEnd_toStartOf="@id/orderno"
+                bind:layout_constraintHorizontal_weight="0.2"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="parent"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/orderno"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@color/gray_color"
+                android:gravity="center_vertical"
+                android:text="@{order.ordernumber}"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintEnd_toStartOf="@id/orderdetails"
+                bind:layout_constraintHorizontal_weight="0.6"
+                bind:layout_constraintStart_toEndOf="@id/ordernoheading"
+                bind:layout_constraintTop_toTopOf="parent"
+                bind:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/orderdetails"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@color/gray_color"
+                android:gravity="center_vertical|end"
+                android:onClick="@{view->order.orderView(view,order)}"
+                android:paddingEnd="5dp"
+                android:text="@string/orderdetails"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:textColor="@color/colorPrimary"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintHorizontal_weight="0.2"
+                bind:layout_constraintStart_toEndOf="@id/orderno"
+                bind:layout_constraintTop_toTopOf="parent"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:text="@{order.name}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/ordernoheading"
+                bind:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/placedontext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:text="@string/placedon"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/name"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                android:text="@{order.date}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toEndOf="@id/placedontext"
+                bind:layout_constraintTop_toBottomOf="@id/name"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/totalspendingtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:text="@string/totalspending"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/placedontext"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/totalspending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="@{order.price}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toEndOf="@id/totalspendingtext"
+                bind:layout_constraintTop_toBottomOf="@id/placedontext"
+                bind:texttype="bold" />
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray_color"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintTop_toBottomOf="@id/totalspending" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/boughtforheading"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="@string/boughtfor"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/line"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/boughtfor"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="@{order.boughtfor}"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintStart_toEndOf="@id/boughtforheading"
+                bind:layout_constraintTop_toBottomOf="@id/line"
+                bind:texttype="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/reorder_but"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/button_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/reorder"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/boughtfor" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
+

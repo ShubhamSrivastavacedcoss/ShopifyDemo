@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="listdata"
+            type="com.shopifydemodemo.app.basesection.models.ListData" />
+        <variable
+            name="handler"
+            type="com.shopifydemodemo.app.basesection.adapters.RecylerAdapter.ClickHandler" />
+    </data>
+    <com.shopifydemodemo.app.customviews.MageNativeTextView
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appversion"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@{listdata.textdata}"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        app:texttype="bold"
+        android:onClick="@{view->handler.setCurrency(view,listdata)}"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+</layout>

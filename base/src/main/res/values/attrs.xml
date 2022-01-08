@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MageNativeTextView">
+        <attr name="texttype" format="string" />
+    </declare-styleable>
+    <declare-styleable name="MageNativeButton">
+        <attr name="buttontype" format="string" />
+        <attr name="buttonastext" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="MageNativeEditText">
+        <attr name="edittype" format="string" />
+    </declare-styleable>
+    <declare-styleable name="MageNativeRadioButton">
+        <attr name="radiotype" format="string" />
+    </declare-styleable>
+
+</resources >

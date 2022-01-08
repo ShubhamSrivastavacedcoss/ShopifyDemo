@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.shopifydemodemo.app.customviews.MageNativeTextView
+        android:id="@+id/statictext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:texttype="bold"
+        android:layout_margin="10dp"
+        android:text="@string/alreadyhaveaccount"
+        android:gravity="center"/>
+
+    <com.shopifydemodemo.app.customviews.MageNativeEditText
+        android:id="@+id/passwordfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/statictext"
+        android:backgroundTint="@color/black"
+        android:hint="@string/enter_password"
+        android:inputType="text"
+        android:textColorHint="@color/black"
+        app:edittype="bold"
+        android:layout_margin="10dp"/>
+
+    <com.shopifydemodemo.app.customviews.MageNativeButton
+        android:id="@+id/submitbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordfield"
+        android:layout_margin="10dp"
+        android:text="@string/submit"
+        app:buttontype="bold"
+        android:background="@color/appTheme"/>
+
+
+</RelativeLayout>

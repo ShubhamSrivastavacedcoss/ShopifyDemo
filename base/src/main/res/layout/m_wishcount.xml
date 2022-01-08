@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright/**
+  ~          * CedCommerce
+  ~           *
+  ~           * NOTICE OF LICENSE
+  ~           *
+  ~           * This source file is subject to the End User License Agreement (EULA)
+  ~           * that is bundled with this package in the file LICENSE.txt.
+  ~           * It is also available through the world-wide-web at this URL:
+  ~           * http://cedcommerce.com/license-agreement.txt
+  ~           *
+  ~           * @category  Ced
+  ~           * @package   MageNative
+  ~           * @author    CedCommerce Core Team <connect@cedcommerce.com >
+  ~           * @copyright Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  ~           * @license      http://cedcommerce.com/license-agreement.txt
+  ~           */
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp">
+
+        <info.androidhive.fontawesome.FontTextView
+            android:id="@+id/cart_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:contentDescription="@string/search"
+            android:gravity="center_horizontal"
+            android:text="&#xf004;"
+            android:textColor="@color/main_color_gray_lt"
+            android:textSize="16sp"
+            android:tint="@color/main_color_gray_lt"
+            app:solid_icon="true" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/white_border_circle"
+        android:gravity="center" />
+
+    <RelativeLayout
+        android:id="@+id/back"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/black"
+        android:gravity="center">
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="8sp" />
+    </RelativeLayout>
+</FrameLayout>

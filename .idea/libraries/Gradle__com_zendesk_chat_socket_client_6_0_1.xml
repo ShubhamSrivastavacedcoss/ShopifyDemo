@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zendesk:chat-socket-client:6.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/chat-socket-client/6.0.1/97d37c6e7ab1162bf001b8f806a7bc2098ac06e6/chat-socket-client-6.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/chat-socket-client/6.0.1/dff264ef8e8c4e1cbc8a44a1b9ea6e8f170faf4/chat-socket-client-6.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zendesk/chat-socket-client/6.0.1/7c396c352656266c9cb077910958939a59242ce0/chat-socket-client-6.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

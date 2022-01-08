@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".checkoutsection.activities.OrderSuccessActivity">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/cairoregular"
+            android:gravity="center"
+            android:text="@string/thank_you"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toTopOf="@+id/order_placed" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/order_placed"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/success_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/order_placed_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/thank_you_order_has_been_placed_successfully"
+            android:textSize="14sp"
+            app:fontFamily="@font/cairoregular"
+            app:layout_constraintTop_toBottomOf="@+id/order_placed" />
+
+        <com.shopifydemodemo.app.customviews.MageNativeButton
+            android:id="@+id/continue_shopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/appTheme"
+            android:text="@string/continue_shopping"
+            app:buttontype="bold"
+            app:layout_constraintTop_toBottomOf="@+id/order_placed_txt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

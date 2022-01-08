@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="20dp"
+        tools:context=".yotporewards.referfriend.ReferFriendActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/heart_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/heart_image" />
+
+        <com.shopifydemodemo.app.customviews.MageNativeTextView
+            android:id="@+id/referfriend_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:lineSpacingExtra="10dp"
+            android:lines="4"
+            android:text="Earn upto 500 points for every time you refer a friend who spends over ₹500. 1 point = Re 1"
+            app:layout_constraintTop_toBottomOf="@+id/heart_image"
+            app:texttype="bold" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/referral_link"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/blackborder_selector"
+            android:clickable="false"
+            android:drawableEnd="@drawable/copy_icon"
+            android:drawablePadding="10dp"
+            android:enabled="false"
+            android:padding="10dp"
+            android:text="http://rwrd.io/cnwz3fl"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/referfriend_text" />
+
+        <com.shopifydemodemo.app.customviews.MageNativeButton
+            android:id="@+id/email_but"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/email_icon"
+            android:drawablePadding="10dp"
+            android:text="@string/email"
+            app:buttontype="white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/referral_link" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

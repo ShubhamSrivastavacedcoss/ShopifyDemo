@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="handler"
+            type="com.shopifydemodemo.app.addresssection.activities.AddressList.ClickHandler" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/addresslist"
+            android:layoutAnimation="@anim/layout_animation"
+           />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:srcCompat="@drawable/plus"
+            android:layout_margin="25dp"
+            android:onClick="@{handler::addAddress}"
+            android:tint="@color/white"
+            android:focusable="true" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

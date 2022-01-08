@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/homecontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/personalisedsection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray_color"
+                android:visibility="gone">
+
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/personalisedyext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/trendingproducts"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:texttype="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/personalised"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/white"
+                    android:layoutAnimation="@anim/layout_animation"
+                    bind:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    bind:layout_constraintBottom_toBottomOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/personalisedyext"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bestsellerpersonalisedsection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray_color"
+                android:visibility="gone">
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/bestpersonalisedyext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/topselling"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:texttype="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bestpersonalised"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/white"
+                    android:layoutAnimation="@anim/layout_animation"
+                    bind:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    bind:layout_constraintBottom_toBottomOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/bestpersonalisedyext"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

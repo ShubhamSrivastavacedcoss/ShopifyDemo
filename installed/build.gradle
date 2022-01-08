@@ -1,0 +1,13 @@
+apply plugin: 'com.android.dynamic-feature'
+/*apply plugin: 'io.fabric'*/
+android {
+    compileSdkVersion 29
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+dependencies {
+    implementation project(':base')
+}
+

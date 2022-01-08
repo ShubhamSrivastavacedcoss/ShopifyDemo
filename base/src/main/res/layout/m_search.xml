@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright/**
+  ~          * CedCommerce
+  ~           *
+  ~           * NOTICE OF LICENSE
+  ~           *
+  ~           * This source file is subject to the End User License Agreement (EULA)
+  ~           * that is bundled with this package in the file LICENSE.txt.
+  ~           * It is also available through the world-wide-web at this URL:
+  ~           * http://cedcommerce.com/license-agreement.txt
+  ~           *
+  ~           * @category  Ced
+  ~           * @package   MageNative
+  ~           * @author    CedCommerce Core Team <connect@cedcommerce.com >
+  ~           * @copyright Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  ~           * @license      http://cedcommerce.com/license-agreement.txt
+  ~           */
+  -->
+
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        >
+        <info.androidhive.fontawesome.FontTextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:id="@+id/search_icon"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/search"
+            android:tint="@color/main_color_gray_lt"
+            android:src="@drawable/search"
+            android:text="&#xf002;"
+            android:gravity="center_horizontal"
+            android:textColor="@color/main_color_gray_lt"
+            android:textSize="16sp"
+            app:solid_icon="true" />
+    </RelativeLayout>
+</FrameLayout>

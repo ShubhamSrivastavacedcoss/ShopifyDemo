@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="category"
+            type="com.shopifydemodemo.app.homesection.models.CategoryCircle" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/cat_one"
+            android:layout_width="0dp"
+            android:layout_height="105dp"
+            android:gravity="center"
+            android:onClick="@{view->category.catClick(view,category)}"
+            android:tag="cat_one"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cat_two"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_one"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                bind:circleImageUrl="@{category.cat_image_one}" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/cat_text_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_one"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{category.cat_text_one}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                app:texttype="normal" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cat_two"
+            android:layout_width="0dp"
+            android:layout_height="105dp"
+            android:gravity="center"
+            android:onClick="@{view->category.catClick(view,category)}"
+            android:tag="cat_two"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cat_three"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/cat_one"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_two"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                bind:circleImageUrl="@{category.cat_image_two}" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/cat_text_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_two"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{category.cat_text_two}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                app:texttype="normal" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cat_three"
+            android:layout_width="0dp"
+            android:layout_height="105dp"
+            android:gravity="center"
+            android:onClick="@{view->category.catClick(view,category)}"
+            android:tag="cat_three"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cat_four"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/cat_two"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_three"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                bind:circleImageUrl="@{category.cat_image_three}" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/cat_text_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_three"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{category.cat_text_three}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                app:texttype="normal" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cat_four"
+            android:layout_width="0dp"
+            android:layout_height="105dp"
+            android:gravity="center"
+            android:onClick="@{view->category.catClick(view,category)}"
+            android:tag="cat_four"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cat_five"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/cat_three"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_four"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                bind:circleImageUrl="@{category.cat_image_four}" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/cat_text_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_four"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{category.cat_text_four}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                app:texttype="normal" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cat_five"
+            android:layout_width="0dp"
+            android:layout_height="105dp"
+            android:gravity="center"
+            android:onClick="@{view->category.catClick(view,category)}"
+            android:tag="cat_five"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/cat_four"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_five"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                bind:circleImageUrl="@{category.cat_image_five}" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/cat_text_five"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_five"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{category.cat_text_five}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                app:texttype="normal" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

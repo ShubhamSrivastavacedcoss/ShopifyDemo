@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handlers"
+            type="com.shopifydemodemo.app.loginsection.activity.LoginActivity.MyClickHandlers" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        bind:layout_constraintBottom_toBottomOf="parent"
+        bind:layout_constraintEnd_toEndOf="parent"
+        bind:layout_constraintStart_toStartOf="parent"
+        bind:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/back_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                bind:imageUrl="@{handlers.image}"
+                bind:layout_constraintBottom_toBottomOf="parent"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:alpha="0.5"
+                android:background="@drawable/shadow"
+                bind:layout_constraintBottom_toBottomOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/startguide"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                bind:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/endguide"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                bind:layout_constraintGuide_percent="0.9" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/maincontent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                bind:layout_constraintBottom_toBottomOf="parent"
+                bind:layout_constraintEnd_toStartOf="@id/endguide"
+                bind:layout_constraintStart_toEndOf="@id/startguide"
+                bind:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/username_lyt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/white"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="@string/email_address"
+                        android:inputType="textEmailAddress"
+                        android:paddingStart="5dp"
+                        android:paddingBottom="15dp"
+                        android:textSize="12sp"
+                        bind:edittype="white"
+                        tools:targetApi="lollipop" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password_lyt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColorHint="@color/white"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@+id/username_lyt"
+                    bind:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="@string/Password"
+                        android:inputType="textPassword"
+                        android:padding="5dp"
+                        android:textColorHint="@color/white"
+                        android:textSize="12sp"
+                        bind:edittype="white"
+                        tools:targetApi="lollipop" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.shopifydemodemo.app.customviews.MageNativeButton
+                    android:id="@+id/login"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:onClick="@{handlers::onSignUpClicked}"
+                    android:text="@string/login"
+                    bind:buttontype="white"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/password_lyt" />
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/forgotpassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:onClick="@{handlers::forgotPass}"
+                    android:text="@string/forgotpassword"
+                    android:textColor="@color/white"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/login"
+                    bind:texttype="whitetext" />
+
+                <com.shopifydemodemo.app.customviews.MageNativeTextView
+                    android:id="@+id/signupbut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:onClick="@{handlers::newsignup}"
+                    android:text="@string/donthaveaccount"
+                    bind:layout_constraintEnd_toEndOf="parent"
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/forgotpassword"
+                    bind:texttype="whitetext" />
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/orsection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    bind:layout_constraintTop_toTopOf="@+id/signupbut">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="#D7D7D7" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:text="@string/OR"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="#D7D7D7" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/sociallogins"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    bind:layout_constraintTop_toBottomOf="@+id/orsection">
+
+                    <com.developer.gbuttons.GoogleSignInButton
+                        android:id="@+id/MageNative_social_login_google"
+                        android:onClick="@{handlers::GoogleLogin}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerInParent="true"
+                        android:text="@string/google_sign_up"
+                        bind:isDarkTheme="true" />
+
+                    <FrameLayout
+                        android:layout_below="@+id/MageNative_social_login_google"
+                        android:id="@+id/FrameLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_height="40dp">
+
+                        <com.facebook.login.widget.LoginButton
+                            android:visibility="invisible"
+                            android:id="@+id/fb_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+
+                        <Button
+                            android:background="#3B5998"
+                            android:onClick="@{handlers::FbLogin}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/fb"
+                            android:textAllCaps="false"
+                            android:gravity="center"
+                            android:text="Sign up with Facebook"
+                            android:textSize="12sp"
+                            android:textColor="#ffffff" />
+                    </FrameLayout>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

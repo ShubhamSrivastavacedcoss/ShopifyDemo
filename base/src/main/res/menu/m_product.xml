@@ -1,0 +1,31 @@
+<!--
+  ~ Copyright/**
+  ~          * CedCommerce
+  ~           *
+  ~           * NOTICE OF LICENSE
+  ~           *
+  ~           * This source file is subject to the End User License Agreement (EULA)
+  ~           * that is bundled with this package in the file LICENSE.txt.
+  ~           * It is also available through the world-wide-web at this URL:
+  ~           * http://cedcommerce.com/license-agreement.txt
+  ~           *
+  ~           * @category  Ced
+  ~           * @package   MageNative
+  ~           * @author    CedCommerce Core Team <connect@cedcommerce.com >
+  ~           * @copyright Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  ~           * @license      http://cedcommerce.com/license-agreement.txt
+  ~           */
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/cart_item"
+        android:actionLayout="@layout/m_count"
+        android:icon="@drawable/menu_cart"
+        android:orderInCategory="2"
+        android:title="@string/cart"
+        app:showAsAction="ifRoom" />
+</menu>

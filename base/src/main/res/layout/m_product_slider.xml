@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="productslider"
+            type="com.shopifydemodemo.app.homesection.models.ProductSlider" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/panelbackgroundcolor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:paddingStart="8dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="5dp"
+            android:visibility="@{productslider.headertextvisibility}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/headertext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{productslider.headertext}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="@{productslider.headertextvisibility}"
+                app:layout_constraintEnd_toStartOf="@id/actiontext"
+                app:layout_constraintHorizontal_weight="0.8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/actiontext"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:onClick="@{view->productslider.moreAction(view,productslider)}"
+                android:text="@{productslider.actiontext}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="@{productslider.actiontextvisibity}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.2"
+                app:layout_constraintStart_toEndOf="@id/headertext"
+                app:layout_constraintTop_toTopOf="parent"
+                app:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/subheadertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{productslider.subheadertext}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="@{productslider.subheadertextvisibity}"
+                app:layout_constraintBottom_toTopOf="@id/timericon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/headertext"
+                app:texttype="normal" />
+
+            <info.androidhive.fontawesome.FontTextView
+                android:id="@+id/timericon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="&#xf017;"
+                android:textColor="@color/main_color_gray_lt"
+                android:textSize="13sp"
+                android:visibility="@{productslider.timericon}"
+                app:layout_constraintStart_toStartOf="@id/subheadertext"
+                app:layout_constraintTop_toBottomOf="@id/subheadertext"
+                app:solid_icon="false" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{productslider.timertext}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="@{productslider.timericon}"
+                app:layout_constraintBottom_toTopOf="@id/timer_message"
+                app:layout_constraintStart_toEndOf="@id/timericon"
+                app:layout_constraintTop_toBottomOf="@id/subheadertext"
+                app:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/timer_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="5dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{productslider.timertextmessage}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="@{productslider.timericon}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/timericon"
+                app:texttype="normal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productdata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerback" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

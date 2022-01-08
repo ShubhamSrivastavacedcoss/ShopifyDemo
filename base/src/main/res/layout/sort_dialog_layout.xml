@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.shopifydemodemo.app.customviews.MageNativeRadioButton
+            android:id="@+id/atoz"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:buttonTint="@color/black"
+            android:tag="atoz"
+            android:text="@string/atoz"
+            app:radiotype="bold" />
+
+        <com.shopifydemodemo.app.customviews.MageNativeRadioButton
+            android:id="@+id/ztoa"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:buttonTint="@color/black"
+            android:tag="ztoa"
+            android:text="@string/ztoa"
+            app:radiotype="bold" />
+
+        <com.shopifydemodemo.app.customviews.MageNativeRadioButton
+            android:id="@+id/htol"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:buttonTint="@color/black"
+            android:tag="htol"
+            android:text="@string/htol"
+            app:radiotype="bold" />
+
+        <com.shopifydemodemo.app.customviews.MageNativeRadioButton
+            android:id="@+id/ltoh"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:buttonTint="@color/black"
+            android:tag="ltoh"
+            android:text="@string/ltoh"
+            app:radiotype="bold" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
+
+
+

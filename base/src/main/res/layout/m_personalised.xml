@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="commondata"
+            type="com.shopifydemodemo.app.basesection.models.CommanModel" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="features"
+            type="com.shopifydemodemo.app.basesection.models.FeaturesModel" />
+
+
+        <variable
+            name="listdata"
+            type="com.shopifydemodemo.app.basesection.models.ListData" />
+
+        <variable
+            name="clickproduct"
+            type="com.shopifydemodemo.app.personalised.adapters.PersonalisedAdapter.PersonalisedProduct" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        bind:cardCornerRadius="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="200dp"
+            android:layout_height="275dp"
+            android:background="@color/white"
+            android:paddingBottom="4dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:contentDescription="@string/image"
+                android:onClick="@{(view) -> clickproduct.productClick(view,listdata)}"
+                bind:imageUrl="@{commondata.imageurl}"
+                bind:layout_constraintDimensionRatio="H,0.7:0.7"
+                bind:layout_constraintTop_toTopOf="parent" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@{listdata.textdata}"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintTop_toBottomOf="@id/image"
+                bind:texttype="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/wishlist_but"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="@{(view) -> clickproduct.wishListAdd(view,listdata)}"
+                android:src="@drawable/wishlist_icon"
+                android:visibility="gone"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/wish_but"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/wishlist_icon"
+                android:onClick="@{(view) -> clickproduct.wishListAdd(view,listdata)}"
+                android:visibility="gone"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/cart_but"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/cart_icon_bottom"
+                android:tint="@color/black"
+                android:onClick="@{(view) -> clickproduct.addCart(view,listdata)}"
+                android:visibility="gone"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/shortdescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingEnd="4dp"
+                android:text="@{listdata.description}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="gone"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/name"
+                bind:texttype="normal" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/specialprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:text="@{listdata.specialprice}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:visibility="gone"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/shortdescription"
+                bind:texttype="bold" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeTextView
+                android:id="@+id/regularprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:text="@{listdata.regularprice}"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/specialprice"
+                bind:texttype="normal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

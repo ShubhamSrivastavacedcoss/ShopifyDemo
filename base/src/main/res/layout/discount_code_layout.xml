@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:padding="30dp">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairobold"
+                android:gravity="center"
+                android:text="@string/want_to_apply_discount_code"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/cairoregular"
+                android:gravity="center"
+                android:text="@string/you_can_apply_discount_code_here"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_title" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/discount_code_edt"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:inputType="textCapCharacters"
+                android:background="@drawable/round_corner_lightgray"
+                android:hint="@string/discount_code"
+                android:paddingStart="8dp"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@+id/title_2" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeButton
+                android:id="@+id/yes_but"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/yes_apply_code"
+                app:buttontype="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/no_but"
+                app:layout_constraintTop_toBottomOf="@+id/discount_code_edt" />
+
+            <com.shopifydemodemo.app.customviews.MageNativeButton
+                android:id="@+id/no_but"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/no"
+                app:buttontype="normal"
+                app:layout_constraintEnd_toStartOf="@+id/yes_but"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/discount_code_edt" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
